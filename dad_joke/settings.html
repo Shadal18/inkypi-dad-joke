@@ -3,10 +3,31 @@
   <input id="title" name="title" type="text" class="form-input" placeholder="Dad Joke" />
 </div>
 
-<div class="form-group">
-  <label for="footer" class="form-label">Footer Text</label>
-  <input id="footer" name="footer" type="text" class="form-input" placeholder="Powered by API Ninjas" />
-  <small> Optional footer text shown under the joke. </small>
+<div class="form-group" style="margin-bottom: 18px">
+  <label for="show_powered_by" class="form-label" style="margin-bottom: 8px; display: block"> Footer </label>
+
+  <label
+    for="show_powered_by"
+    style="
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.98rem;
+      color: #333;
+      cursor: pointer;
+      user-select: none;
+    "
+  >
+    <input
+      id="show_powered_by"
+      name="show_powered_by"
+      type="checkbox"
+      style="width: 18px; height: 18px; cursor: pointer"
+    />
+    Show “Powered by API Ninjas”
+  </label>
+
+  <small style="display: block; margin-top: 8px"> Enable or hide the footer credit shown under the joke. </small>
 </div>
 
 <hr style="border: 0; border-top: 1px solid rgba(0, 0, 0, 0.12); margin: 24px 0 18px" />
@@ -67,20 +88,25 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const titleInput = document.getElementById("title")
-    const footerInput = document.getElementById("footer")
+    const showPoweredByInput = document.getElementById("show_powered_by")
 
     if (typeof loadPluginSettings !== "undefined" && loadPluginSettings) {
       if (titleInput) titleInput.value = pluginSettings.title || "Dad Joke"
-      if (footerInput) footerInput.value = pluginSettings.footer || "Powered by API Ninjas"
+      if (showPoweredByInput) {
+        showPoweredByInput.checked =
+          pluginSettings.show_powered_by !== undefined
+            ? pluginSettings.show_powered_by === true || pluginSettings.show_powered_by === "true"
+            : true
+      }
     } else {
       if (titleInput) titleInput.value = "Dad Joke"
-      if (footerInput) footerInput.value = "Powered by API Ninjas"
+      if (showPoweredByInput) showPoweredByInput.checked = true
     }
 
     if (typeof kofiWidgetOverlay !== "undefined") {
       kofiWidgetOverlay.draw("shadal", {
         type: "floating-chat",
-        "floating-chat.donateButton.text": "More coffee",
+        "floating-chat.donateButton.text": "I ❤️ Coffee",
         "floating-chat.donateButton.background-color": "#00b9fe",
         "floating-chat.donateButton.text-color": "#fff",
       })
