@@ -14,21 +14,9 @@ def split_joke_lines(joke, width=28, max_lines=5):
     return wrapped
 
 
-def to_bool(value, default=True):
-    if value is None:
-        return default
-    if isinstance(value, bool):
-        return value
-    if isinstance(value, str):
-        return value.strip().lower() in ("true", "1", "yes", "on")
-    return bool(value)
-
-
 class DadJoke(BasePlugin):
     def generate_image(self, settings, device_config):
         title = (settings.get("title") or "").strip() or "Dad Joke"
-        show_powered_by = to_bool(settings.get("show_powered_by"), True)
-        footer = "Powered by API Ninjas" if show_powered_by else ""
 
         api_key = device_config.load_env_key("API_NINJAS_KEY")
         if not api_key:
@@ -72,8 +60,6 @@ class DadJoke(BasePlugin):
                 "title": title,
                 "joke": joke,
                 "joke_lines": joke_lines,
-                "footer": footer,
-                "show_powered_by": show_powered_by,
                 "plugin_settings": settings,
             }
         )
@@ -85,10 +71,5 @@ class DadJoke(BasePlugin):
             "required": False,
             "description": "Custom header text",
             "example": "Dad Joke",
-        }
-        template_params["show_powered_by"] = {
-            "required": False,
-            "description": "Show Powered by API Ninjas footer",
-            "example": True,
         }
         return template_params
