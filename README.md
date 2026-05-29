@@ -1,6 +1,6 @@
 # InkyPi Dad Joke
 
-An InkyPi plugin that shows a dad joke with configurable text settings.
+An InkyPi plugin that shows a random dad joke with a configurable header setting.
 
 ## Install
 
@@ -46,18 +46,16 @@ If you don’t see your changes after updating:
 This plugin is an extension for the InkyPi e-paper display frame and includes the following features.
 
 - Shows a random dad joke from the API Ninjas Dad Jokes API.
-- Family-friendly and workplace-safe joke source.
+- Uses a joke source described as family-friendly and workplace-safe.
 - Large, centered joke layout optimized for quick glance reading on e-paper.
 - Styled quote-card presentation instead of plain text output.
-- Optional custom header text.
-- Optional custom footer text.
+- Simple settings with a configurable header text.
 
 ## Settings
 
 The plugin settings page lets you customize:
 
 - Header text.
-- Footer text.
 
 ## API Key Setup
 
