@@ -1,0 +1,24 @@
+{% extends "plugin.html" %} {% block content %}
+<div class="joke-screen">
+  <div class="topbar">
+    <div class="title">{{ title }}</div>
+    <div class="badge">😂 Daily Groan</div>
+  </div>
+
+  <div class="joke-card">
+    <div class="quote-mark">“</div>
+
+    <div class="joke-text">
+      {% for line in joke_lines %}
+      <div class="joke-line">{{ line }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="quote-mark closing">”</div>
+  </div>
+
+  <div class="footer-row">
+    <div class="footer-pill">{{ footer }}</div>
+  </div>
+</div>
+{% endblock %}

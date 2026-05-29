@@ -1,0 +1,123 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  font-family: "Jost", sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 18px 20px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background:
+    radial-gradient(circle at top left, rgba(255, 193, 7, 0.14), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(0, 185, 254, 0.12), transparent 30%),
+    linear-gradient(180deg, #fffdf7 0%, #f4fbff 100%);
+  overflow: hidden;
+}
+
+.joke-screen {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 58px 1fr 42px;
+  gap: 14px;
+  color: #111111;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.badge {
+  border: 2px solid #111111;
+  border-radius: 999px;
+  background: #fff3c4;
+  padding: 10px 16px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.joke-card {
+  border: 3px solid #111111;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255, 184, 77, 0.14), rgba(255, 117, 143, 0.08)), #ffffff;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.quote-mark {
+  font-size: 72px;
+  line-height: 0.8;
+  font-weight: 900;
+  color: #ff8b00;
+  align-self: start;
+}
+
+.quote-mark.closing {
+  align-self: end;
+  text-align: right;
+  color: #00a6e7;
+}
+
+.joke-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.joke-line {
+  font-size: 34px;
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  word-break: break-word;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer-pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid rgba(17, 17, 17, 0.18);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+  color: #5f6c7b;
+}

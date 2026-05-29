@@ -1,0 +1,6 @@
+{
+  "display_name": "Dad Joke",
+  "id": "dad_joke",
+  "class": "DadJoke",
+  "repository": "https://github.com/shadal18/inkypi-dad-joke"
+}
