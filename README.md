@@ -2,6 +2,8 @@
 
 An InkyPi plugin that shows a random dad joke with a configurable header setting.
 
+_Dad Joke_ is a plugin for [InkyPi](https://github.com/fatihak/InkyPi) that renders a random dad joke in a bold, quote‑card layout optimized for e‑paper.
+
 ## Install
 
 Use the InkyPi plugin installer with the plugin ID and this repository URL, following the install pattern shown by the official InkyPi plugin template.
