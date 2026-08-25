@@ -1,371 +1,186 @@
 <style>
   :root {
-    --dj-bg: var(--background-color, var(--color-background, #f5f7fb));
-    --dj-bg-soft: var(--card-background-secondary, var(--color-surface-2, #eef2f7));
-    --dj-panel: var(--card-background, var(--color-surface, #ffffff));
-    --dj-panel-2: var(--card-background-hover, var(--color-surface-2, #f8fafc));
-    --dj-border: var(--border-color, rgba(15, 23, 42, 0.12));
-    --dj-text: var(--text-primary, var(--color-text, #0f172a));
-    --dj-text-muted: var(--text-secondary, var(--color-text-secondary, #475569));
-    --dj-text-soft: var(--text-muted, #64748b);
-    --dj-primary: var(--accent-color, #14b8a6);
-    --dj-info: var(--info-color, #3b82f6);
-    --dj-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
-    --dj-radius-xl: 18px;
-    --dj-radius-lg: 14px;
+    --ink-bg: var(--background-color, var(--color-background, #f5f7fb));
+    --ink-bg-soft: var(--card-background-secondary, var(--color-surface-2, #eef2f7));
+    --ink-panel: var(--card-background, var(--color-surface, #ffffff));
+    --ink-panel-2: var(--card-background-hover, var(--color-surface-2, #f8fafc));
+    --ink-border: var(--border-color, rgba(15, 23, 42, 0.12));
+    --ink-text: var(--text-primary, var(--color-text, #0f172a));
+    --ink-text-muted: var(--text-secondary, var(--color-text-secondary, #475569));
+    --ink-text-soft: var(--text-muted, #64748b);
+    --ink-primary: var(--accent-color, #14b8a6);
+    --ink-info: var(--info-color, #3b82f6);
+    --ink-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --ink-radius-xl: 18px;
   }
 
   html.dark,
   body.dark,
   [data-theme="dark"],
   html[data-theme="dark"] {
-    --dj-bg: var(--background-color, var(--color-background, #0f172a));
-    --dj-bg-soft: var(--card-background-secondary, var(--color-surface-2, #162033));
-    --dj-panel: var(--card-background, var(--color-surface, #111827));
-    --dj-panel-2: var(--card-background-hover, var(--color-surface-2, #172033));
-    --dj-border: var(--border-color, rgba(255, 255, 255, 0.1));
-    --dj-text: var(--text-primary, var(--color-text, #f8fafc));
-    --dj-text-muted: var(--text-secondary, var(--color-text-secondary, #cbd5e1));
-    --dj-text-soft: var(--text-muted, #94a3b8);
-    --dj-shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.22);
+    --ink-bg: var(--background-color, var(--color-background, #0f172a));
+    --ink-bg-soft: var(--card-background-secondary, var(--color-surface-2, #162033));
+    --ink-panel: var(--card-background, var(--color-surface, #111827));
+    --ink-panel-2: var(--card-background-hover, var(--color-surface-2, #172033));
+    --ink-border: var(--border-color, rgba(255, 255, 255, 0.1));
+    --ink-text: var(--text-primary, var(--color-text, #f8fafc));
+    --ink-text-muted: var(--text-secondary, var(--color-text-secondary, #cbd5e1));
+    --ink-text-soft: var(--text-muted, #94a3b8);
+    --ink-shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.22);
   }
 
-  .dadjoke-settings-container {
-    width: 100%;
-    box-sizing: border-box;
-    color: var(--dj-text);
+  .dadjoke-settings-container { width: 100%; box-sizing: border-box; color: var(--ink-text); }
+  .ink-shell { display: grid; gap: 18px; margin-top: 8px; }
+
+  .ink-hero, .ink-section, .ink-hint-card, .ink-link-card {
+    overflow: hidden; border: 1px solid var(--ink-border); border-radius: var(--ink-radius-xl);
+    background: linear-gradient(180deg, var(--ink-panel), var(--ink-panel-2)); box-shadow: var(--ink-shadow-sm);
   }
 
-  .dj-shell {
-    display: grid;
-    gap: 18px;
-    margin-top: 8px;
-  }
-
-  .dj-hero {
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--dj-radius-xl);
-    border: 1px solid var(--dj-border);
+  .ink-hero {
+    position: relative; padding: 22px;
     background:
-      radial-gradient(circle at top right, color-mix(in srgb, var(--dj-primary) 16%, transparent), transparent 34%),
-      radial-gradient(circle at bottom left, color-mix(in srgb, var(--dj-info) 12%, transparent), transparent 30%),
-      linear-gradient(180deg, color-mix(in srgb, var(--dj-panel) 92%, var(--dj-bg-soft) 8%), var(--dj-panel-2));
-    box-shadow: var(--dj-shadow-sm);
-    padding: 22px 22px 18px;
+      radial-gradient(circle at top right, color-mix(in srgb, var(--ink-primary) 16%, transparent), transparent 34%),
+      radial-gradient(circle at bottom left, color-mix(in srgb, var(--ink-info) 12%, transparent), transparent 30%),
+      linear-gradient(180deg, color-mix(in srgb, var(--ink-panel) 92%, var(--ink-bg-soft) 8%), var(--ink-panel-2));
   }
 
-  .dj-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--dj-primary) 14%, transparent);
-    color: var(--dj-primary);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    border: 1px solid color-mix(in srgb, var(--dj-primary) 22%, transparent);
+  .ink-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; margin-bottom: 10px;
+    border: 1px solid color-mix(in srgb, var(--ink-primary) 22%, transparent); border-radius: 999px;
+    background: color-mix(in srgb, var(--ink-primary) 14%, transparent); color: var(--ink-primary);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   }
 
-  .dj-hero h2 {
-    margin: 0;
-    color: var(--dj-text);
-    font-size: 28px;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
+  .ink-hero h2 { margin: 0; color: var(--ink-text); font-size: 28px; line-height: 1.08; letter-spacing: -0.03em; }
+  .ink-hero p { max-width: 68ch; margin: 10px 0 0; color: var(--ink-text-muted); font-size: 14px; line-height: 1.6; }
+
+  .ink-hint-card, .ink-link-card { padding: 16px 20px; }
+  .ink-hint-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+  .ink-hint-icon, .ink-section-icon, .ink-link-icon {
+    display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center;
+    border: 1px solid var(--ink-border); border-radius: 12px;
+    background: color-mix(in srgb, var(--ink-bg-soft) 65%, var(--ink-panel) 35%); font-size: 18px;
   }
 
-  .dj-hero p {
-    margin: 10px 0 0;
-    max-width: 68ch;
-    color: var(--dj-text-muted);
-    font-size: 14px;
-    line-height: 1.6;
+  .ink-hint-icon {
+    width: 30px; height: 30px; border-color: color-mix(in srgb, var(--ink-primary) 28%, transparent);
+    border-radius: 9px; background: color-mix(in srgb, var(--ink-primary) 14%, transparent); font-size: 16px;
   }
 
-  .dj-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 18px;
-  }
+  .ink-hint-title { margin: 0; color: var(--ink-text); font-size: 14px; font-weight: 700; }
+  .ink-hint-copy, .ink-link-help { margin: 0; color: var(--ink-text-muted); font-size: 12px; line-height: 1.6; }
 
-  .dj-metric {
-    border: 1px solid var(--dj-border);
-    border-radius: var(--dj-radius-lg);
-    background: color-mix(in srgb, var(--dj-panel) 92%, var(--dj-bg) 8%);
-    padding: 14px 14px 12px;
-    min-width: 0;
-    box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent);
-  }
+  .ink-section-header { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-bottom: 1px solid var(--ink-border); }
+  .ink-section-icon { width: 38px; height: 38px; }
+  .ink-section-copy { flex: 1; min-width: 0; }
+  .ink-section-title { margin: 0; color: var(--ink-text); font-size: 18px; font-weight: 700; line-height: 1.2; }
+  .ink-section-subtitle { margin-top: 4px; color: var(--ink-text-muted); font-size: 13px; }
+  .ink-section-body { padding: 18px 20px 20px; }
 
-  .dj-metric-label {
-    color: var(--dj-text-soft);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-  }
+  .ink-grid { display: grid; gap: 16px; }
+  .ink-field { display: grid; min-width: 0; gap: 8px; }
+  .ink-label { color: var(--ink-text-soft); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
 
-  .dj-metric-value {
-    color: var(--dj-text);
-    font-size: 28px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-
-  .dj-metric-sub {
-    color: var(--dj-text-muted);
-    font-size: 12px;
-    margin-top: 6px;
-  }
-
-  .dj-section,
-  .dj-link-card {
-    border: 1px solid var(--dj-border);
-    border-radius: var(--dj-radius-xl);
-    background: linear-gradient(180deg, var(--dj-panel), var(--dj-panel-2));
-    box-shadow: var(--dj-shadow-sm);
-    overflow: hidden;
-  }
-
-  .dj-section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 18px 20px;
-    border-bottom: 1px solid var(--dj-border);
-  }
-
-  .dj-section-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    border: 1px solid var(--dj-border);
-    background: color-mix(in srgb, var(--dj-bg-soft) 65%, var(--dj-panel) 35%);
-  }
-
-  .dj-section-copy {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .dj-section-title {
-    color: var(--dj-text);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .dj-section-subtitle {
-    color: var(--dj-text-muted);
-    font-size: 13px;
-    margin-top: 4px;
-  }
-
-  .dj-section-body {
-    padding: 18px 20px 20px;
-  }
-
-  .dj-grid {
-    display: grid;
-    gap: 16px;
-  }
-
-  .dj-field {
-    display: grid;
-    gap: 8px;
-    min-width: 0;
-  }
-
-  .dj-label {
-    color: var(--dj-text-soft);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .dj-input,
-  .dadjoke-settings-container input[type="text"] {
-    width: 100%;
-    min-height: 46px;
-    padding: 0 14px;
-    border-radius: 12px;
-    border: 1px solid var(--dj-border);
-    background: var(--dj-panel);
-    color: var(--dj-text);
-    outline: none;
-    box-sizing: border-box;
+  .ink-input, .dadjoke-settings-container input[type="text"] {
+    box-sizing: border-box; width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--ink-border);
+    border-radius: 12px; outline: none; background: var(--ink-panel); color: var(--ink-text);
     box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 14%, transparent);
   }
 
-  .dj-input::placeholder,
-  .dadjoke-settings-container input::placeholder {
-    color: var(--dj-text-soft);
-    opacity: 1;
+  .ink-input::placeholder, .dadjoke-settings-container input::placeholder { color: var(--ink-text-soft); opacity: 1; }
+  .ink-input:focus, .dadjoke-settings-container input:focus {
+    border-color: color-mix(in srgb, var(--ink-primary) 45%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ink-primary) 14%, transparent);
   }
 
-  .dj-input:focus,
-  .dadjoke-settings-container input:focus {
-    border-color: color-mix(in srgb, var(--dj-primary) 45%, transparent);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--dj-primary) 14%, transparent);
-  }
+  .ink-note { margin: 0; color: var(--ink-text-muted); font-size: 12px; line-height: 1.6; }
 
-  .dj-note {
-    margin: 0;
-    color: var(--dj-text-muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
+  .ink-link-card { display: flex; align-items: center; gap: 12px; }
+  .ink-link-icon { width: 38px; height: 38px; background: color-mix(in srgb, var(--ink-info) 13%, var(--ink-panel)); }
+  .ink-link-copy { min-width: 0; }
+  .ink-link-card a { display: inline-block; color: var(--ink-primary); font-weight: 700; text-decoration: none; word-break: break-word; }
+  .ink-link-card a:hover, .ink-link-card a:focus-visible { outline: none; text-decoration: underline; }
 
-  .dj-link-card {
-    padding: 16px 20px;
-  }
-
-  .dj-link-card a {
-    color: var(--dj-primary);
-    text-decoration: none;
-    font-weight: 700;
-    word-break: break-word;
-  }
-
-  .dj-link-card a:hover,
-  .dj-link-card a:focus-visible {
-    text-decoration: underline;
-    outline: none;
-  }
-
-  .dj-link-help {
-    margin-top: 8px;
-    color: var(--dj-text-muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  .floatingchat-container-wrap,
-  .floating-chat-kofi-popup-iframe {
-    left: unset !important;
-    right: 16px !important;
-  }
-
-  .floatingchat-container-wrap {
-    bottom: 14px !important;
-  }
-
-  .floating-chat-kofi-popup-iframe {
-    bottom: 76px !important;
-  }
-
-  @media (max-width: 920px) {
-    .dj-metrics {
-      grid-template-columns: 1fr;
-    }
-  }
+  .floatingchat-container-wrap, .floatingchat-container-wrap-mobi { right: 16px !important; bottom: 14px !important; left: unset !important; }
+  .floating-chat-kofi-popup-iframe { right: 16px !important; bottom: 76px !important; left: unset !important; }
 
   @media (max-width: 760px) {
-    .dj-hero {
-      padding: 18px;
-    }
-
-    .dj-hero h2 {
-      font-size: 22px;
-    }
-
-    .dj-section-header {
-      padding: 16px;
-    }
-
-    .dj-section-body,
-    .dj-link-card {
-      padding: 16px;
-    }
+    .ink-hero { padding: 18px; }
+    .ink-hero h2 { font-size: 22px; }
+    .ink-section-header, .ink-section-body, .ink-hint-card, .ink-link-card { padding: 16px; }
+    .ink-link-card { align-items: flex-start; }
   }
 </style>
 
 <div class="dadjoke-settings-container">
-  <div class="dj-shell">
-    <section class="dj-hero">
-      <div class="dj-eyebrow">Dad Joke</div>
-      <h2>Display a random dad joke with a custom header.</h2>
+  <div class="ink-shell">
+    <section class="ink-hero">
+      <div class="ink-eyebrow">😄 Dad joke</div>
+      <h2>Put a random dad joke on your e-paper display.</h2>
       <p>
-        Set the title shown above the joke on your display and keep the plugin repository link nearby for setup help,
-        updates, release notes, and source code.
+        Set the heading shown above each joke. The plugin handles the rest, retrieving a fresh groan-worthy joke when
+        your display job runs.
       </p>
-
-      <div class="dj-metrics">
-        <div class="dj-metric">
-          <div class="dj-metric-label">Content</div>
-          <div class="dj-metric-value">Joke</div>
-          <div class="dj-metric-sub">Single dad joke display output</div>
-        </div>
-        <div class="dj-metric">
-          <div class="dj-metric-label">Setting</div>
-          <div class="dj-metric-value">Title</div>
-          <div class="dj-metric-sub">Custom header text field</div>
-        </div>
-        <div class="dj-metric">
-          <div class="dj-metric-label">Style</div>
-          <div class="dj-metric-value">Simple</div>
-          <div class="dj-metric-sub">Minimal plugin configuration</div>
-        </div>
-      </div>
     </section>
 
-    <section class="dj-section">
-      <div class="dj-section-header">
-        <span class="dj-section-icon" aria-hidden="true">😄</span>
-        <div class="dj-section-copy">
-          <div class="dj-section-title">Display settings</div>
-          <div class="dj-section-subtitle">Customize the heading shown above the joke content.</div>
+    <section class="ink-hint-card">
+      <div class="ink-hint-heading">
+        <span class="ink-hint-icon" aria-hidden="true">✓</span>
+        <h3 class="ink-hint-title">No setup required</h3>
+      </div>
+      <p class="ink-hint-copy">
+        This plugin needs no API key or external account. Customize the optional display heading below and let InkyPi
+        take care of the joke selection.
+      </p>
+    </section>
+
+    <section class="ink-section">
+      <div class="ink-section-header">
+        <span class="ink-section-icon" aria-hidden="true">😄</span>
+        <div class="ink-section-copy">
+          <h3 class="ink-section-title">Display settings</h3>
+          <div class="ink-section-subtitle">Customize the heading shown above the joke content.</div>
         </div>
       </div>
-      <div class="dj-section-body">
-        <div class="dj-grid">
-          <div class="dj-field">
-            <label for="title" class="dj-label">Header text</label>
-            <input id="title" name="title" type="text" class="dj-input" placeholder="Dad Joke" />
-            <p class="dj-note">This text appears as the main title for the dad joke display.</p>
+      <div class="ink-section-body">
+        <div class="ink-grid">
+          <div class="ink-field">
+            <label for="title" class="ink-label">Header text</label>
+            <input id="title" name="title" type="text" class="ink-input" placeholder="Dad Joke" maxlength="40" />
+            <p class="ink-note">Optional. Leave blank to use the default <code>Dad Joke</code> title.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="dj-link-card">
-      <a href="https://github.com/shadal18/inkypi-dad-joke" target="_blank" rel="noopener noreferrer">
-        github.com/shadal18/inkypi-dad-joke
-      </a>
-      <div class="dj-link-help">Setup help, updates, release notes, and source code.</div>
+    <section class="ink-link-card">
+      <span class="ink-link-icon" aria-hidden="true">⌘</span>
+      <div class="ink-link-copy">
+        <a href="https://github.com/shadal18/inkypi-dad-joke" target="_blank" rel="noopener noreferrer">github.com/shadal18/inkypi-dad-joke</a>
+        <div class="ink-link-help">Setup help, updates, release notes, and source code.</div>
+      </div>
     </section>
   </div>
 </div>
 
 <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function () {
     const titleInput = document.getElementById("title")
-
-    if (typeof loadPluginSettings !== "undefined" && loadPluginSettings) {
-      if (titleInput) titleInput.value = pluginSettings.title || "Dad Joke"
-    } else {
-      if (titleInput) titleInput.value = "Dad Joke"
-    }
+    const value =
+      typeof loadPluginSettings !== "undefined" && loadPluginSettings && typeof pluginSettings !== "undefined" && pluginSettings
+        ? pluginSettings.title || "Dad Joke"
+        : "Dad Joke"
+    if (titleInput) titleInput.value = value
 
     if (typeof kofiWidgetOverlay !== "undefined") {
+      const messages = ["I ♥ Coffee", "Tip Jar", "Fuel the Pixels", "Buy Me a Coffee", "Keep InkyPi Brewing"]
+      const message = messages[Math.floor(Math.random() * messages.length)]
       kofiWidgetOverlay.draw("shadal", {
         type: "floating-chat",
-        "floating-chat.donateButton.text": "I ❤️ Coffee",
+        "floating-chat.donateButton.text": message,
         "floating-chat.donateButton.background-color": "#00b9fe",
         "floating-chat.donateButton.text-color": "#fff",
       })
